@@ -1,0 +1,14 @@
+package beltexam;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		double randNumber = Math.random() * 50 + 40;
+		int aNumber = (int) (Math.random() * 50 + 10);
+		System.out.println((int)randNumber);
+		System.out.println(aNumber);
+	}
+
+}
