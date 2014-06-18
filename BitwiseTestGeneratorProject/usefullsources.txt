@@ -1,0 +1,6 @@
+Resources and usefull links:
+
+http://stackoverflow.com/questions/6118635/what-is-the-best-pdf-open-source-library-for-java
+http://pdfjet.com/
+http://www.stefanochizzolini.it/en/projects/clown/
+https://code.google.com/p/data-exporter/
