@@ -1,3 +1,4 @@
+
 package com.elsys.generator;
 
 import java.util.Random;
@@ -5,23 +6,25 @@ import java.util.Random;
 import com.elsys.generator.constants.Constants;
 
 
-public class Main
+
+public class Main extends Generator
 {
+	public static int operation;
 
 	public static void main(String[] args)
 	{
 		Random randomService = new Random();
 
-		 int firstNum = randomService.nextInt();
-		 int secondNum = randomService.nextInt();
+		 int firstNum = randomService.nextInt(Integer.MAX_VALUE - 1 + 1) + 1;
+		 int secondNum = randomService.nextInt(Integer.MAX_VALUE - 1 + 1) + 1;
 
 		boolean isShiftLeft = isShiftLeft();
 
-		shiftNumbers(firstNum, secondNum, isShiftLeft);
+		shiftNumbers(firstNum, secondNum, isShiftLeft, 0);
 
-		int bitwisedResult = bitwiseOperation(firstNum, secondNum);
+		int bitwisedResult = bitwiseOperation(firstNum, secondNum, operation);
 
-		System.out.println(Integer.toHexString(bitwisedResult));
+		System.out.println("0x" + Integer.toHexString(bitwisedResult));
 	}
 
 	/**
@@ -36,28 +39,33 @@ public class Main
 		return randomService.nextBoolean();
 	}
 
-	private static void shiftNumbers(int firstNum, int secondNum, boolean isShiftLeft)
+	private static void shiftNumbers(int firstNum, int secondNum, boolean isShiftLeft, int shifter)
 	{
+		Generator generator = new Generator();
 		if (isShiftLeft)
 		{
 			// TODO: CHange 4 to random number
-			firstNum = firstNum << 2;
-			secondNum = secondNum << 2;
+			firstNum = firstNum << generator.randomNumbederGenerator(shifter);
+			secondNum = secondNum << generator.randomNumbederGenerator(shifter);
 		}
 		else
+			//razbrah. Te trqqshe da sa random
+			//da
 		{
 			// TODO: CHange 4 to random number
-			firstNum = firstNum >> 4;
-			secondNum = secondNum >> 4;
+			firstNum = firstNum >> generator.randomNumbederGenerator(shifter);
+			secondNum = secondNum >> generator.randomNumbederGenerator(shifter);
 		}
 	}
 
-	private static int bitwiseOperation(int a, int b)
+	private static int bitwiseOperation(int a, int b, int operation)
 	{
+		Generator generator = new Generator();
 		// TODO: Random 1-3;
 		Random randomService = new Random();
-		int operationType = 1;// randomService.nextInt();
+		int operationType = generator.randomOperationType(operation) ;
 		int result = 0;
+		
 		switch (operationType)
 		{
 		// &
@@ -77,10 +85,12 @@ public class Main
 				break;
 
 			default:
-				System.out.println("Invalid argument passed.");
+				System.out.println(Constants.BAD_ARGUMENT_MESSAGE);
+				System.out.println("OperationType" + operationType);
+//				System.out.println(generator.randomOperationType(operation));
 				break;
 		}
-		return result;
+		return result; 
 	}
 }
 
