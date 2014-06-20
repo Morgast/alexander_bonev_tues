@@ -13,10 +13,21 @@ public class Main extends Generator
 
 	public static void main(String[] args)
 	{
+		
+		Generator generator = new Generator();
 		Random randomService = new Random();
 
-		 int firstNum = randomService.nextInt(Integer.MAX_VALUE - 1 + 1) + 1;
-		 int secondNum = randomService.nextInt(Integer.MAX_VALUE - 1 + 1) + 1;
+		 //int firstNum = randomService.nextInt(Integer.MAX_VALUE - 1 + 1) + 1;
+		 //int secondNum = randomService.nextInt(Integer.MAX_VALUE - 1 + 1) + 1;
+		
+		int firstNum = 0;
+		int secondNum = 0;
+		
+		while((firstNum==0) && (secondNum==0)){
+		firstNum = 1 + (int)(Math.random() * ((40000 - 1) + 1));
+		secondNum = 1 + (int)(Math.random() * ((40000 - 1) + 1));
+		
+		}
 
 		boolean isShiftLeft = isShiftLeft();
 
@@ -25,6 +36,9 @@ public class Main extends Generator
 		int bitwisedResult = bitwiseOperation(firstNum, secondNum, operation);
 
 		System.out.println("0x" + Integer.toHexString(bitwisedResult));
+		System.out.println(generator.shifter());
+		//System.out.println(firstNum);
+		//System.out.println(secondNum);
 	}
 
 	/**
@@ -42,19 +56,21 @@ public class Main extends Generator
 	private static void shiftNumbers(int firstNum, int secondNum, boolean isShiftLeft, int shifter)
 	{
 		Generator generator = new Generator();
-		if (isShiftLeft)
+		if ((isShiftLeft) && (generator.shifter()==1))
 		{
 			// TODO: CHange 4 to random number
 			firstNum = firstNum << generator.randomNumbederGenerator(shifter);
-			secondNum = secondNum << generator.randomNumbederGenerator(shifter);
+			secondNum = secondNum >> generator.randomNumbederGenerator(shifter);
+			System.out.println("4");
 		}
-		else
+		else if(generator.shifter()==2)
 			//razbrah. Te trqqshe da sa random
 			//da
 		{
 			// TODO: CHange 4 to random number
 			firstNum = firstNum >> generator.randomNumbederGenerator(shifter);
-			secondNum = secondNum >> generator.randomNumbederGenerator(shifter);
+			secondNum = secondNum << generator.randomNumbederGenerator(shifter);
+			System.out.println("4");
 		}
 	}
 

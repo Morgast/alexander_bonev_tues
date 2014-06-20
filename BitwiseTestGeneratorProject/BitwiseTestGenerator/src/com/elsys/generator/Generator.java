@@ -22,11 +22,10 @@ public class Generator// kakto ti e kef
 	public int randomNumbederGenerator(int num)
 	{
 		int min = 1;
-		int max = 50000;
+		int max = 5000;
 
 		Random r = new Random();
 		num = r.nextInt(max - min + 1) + min;
- //Kazvam ti samo che nqma smisyl da go pishesh s min i max. Mojesh da slojish prosto chuisloto vutre, ako nqma da se smenqt
 		return num;
 
 	}
@@ -39,6 +38,17 @@ public class Generator// kakto ti e kef
 		Random r = new Random();
 		//9 - 1 + 1 :D
 		randShift = r.nextInt(9) + min;// Shte se nauchish!
+
+		return randShift;
+	}
+	
+	public int shifter()
+	{
+		int min = 1;
+		int max = 9;
+
+		Random r = new Random();
+		int randShift = r.nextInt(2) + 1; 
 
 		return randShift;
 	}
