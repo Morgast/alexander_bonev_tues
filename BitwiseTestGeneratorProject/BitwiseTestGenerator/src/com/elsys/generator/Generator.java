@@ -2,21 +2,22 @@ package com.elsys.generator;
 
 import java.util.Random;
 
-public class Generator// kakto ti e kef
+public class Generator
 {
-	// Stiga se uchi s tiq statichni metodi k
-	public int randomOperationType(int op)
+	/**
+	 * 1- AND <br> 2 - XOR <br> 3 - OR
+	 * 
+	 * @return Number between 1-3 representing a AND, XOR, OR operation
+	 */
+	public int randomOperationType()
 	{
 		int min = 1;
-		int max = 4;
 
 		Random r = new Random();
-//		Da ako se menqt tiq max i min
-//		op = r.nextInt(max - min + 1) + min;
-		op = r.nextInt(3) + min; 
+		//TODO: Return ENUM Constant.
+		int operationType  = r.nextInt(3) + min;
 
-		// System.out.println(i1);
-		return op;
+		return operationType;
 	}
 
 	public int randomNumbederGenerator(int num)
@@ -33,22 +34,18 @@ public class Generator// kakto ti e kef
 	public int randomShiftBitsGenerator(int randShift)
 	{
 		int min = 1;
-		int max = 9;
 
 		Random r = new Random();
-		//9 - 1 + 1 :D
+		// 9 - 1 + 1 :D
 		randShift = r.nextInt(9) + min;// Shte se nauchish!
 
 		return randShift;
 	}
-	
+
 	public int shifter()
 	{
-		int min = 1;
-		int max = 9;
-
 		Random r = new Random();
-		int randShift = r.nextInt(2) + 1; 
+		int randShift = r.nextInt(2) + 1;
 
 		return randShift;
 	}
