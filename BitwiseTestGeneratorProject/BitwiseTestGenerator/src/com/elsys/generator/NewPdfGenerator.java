@@ -129,7 +129,7 @@ package com.elsys.generator;
 	    // now add all this to the document
 	    document.add(catPart);
 
-	  }
+	  } //ina4e skivai kvo prai maina
 
 	  private static void createTable(Section subCatPart)
 	      throws BadElementException {
