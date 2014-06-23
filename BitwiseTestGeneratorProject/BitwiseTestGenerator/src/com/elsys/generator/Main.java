@@ -2,73 +2,14 @@
 
 package com.elsys.generator;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Random;
 
 import com.elsys.generator.constants.Constants;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-
-
 
 public class Main extends Generator
 {
-	
-	private static String task = "";
-	
-	  private static String FILE = "C:\\Users\\Alexander\\Desktop\\NewPDF.pdf";
-	  private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-	      Font.BOLD);
-	  private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-	      Font.NORMAL, BaseColor.RED);
-	  private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
-	      Font.BOLD);
-	  private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-	      Font.BOLD);
-	//NewPdfGenerator pdfgen = new NewPdfGenerator();
-	static Paragraph preface = new Paragraph();
-	
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
-//		Document pdfDocument = new Document(PageSize.A4, 50, 50, 50, 50);
-//		try {
-//			PdfWriter.getInstance(pdfDocument, new FileOutputStream("CurrentFile.pdf"));
-//		} catch (DocumentException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
-		//pdfDocument.open();
-		PdfPTable tasks = new PdfPTable(12);
-		tasks.setWidthPercentage(400);
-		//eto tuk trqbva da pravish slednoto
-		//tasks.addCell(new Paragraph("generiraniq task");
-		//seshtash li se? e kak da vzema ot vsi4ki mesta printovete i da gi sloja tuka  " "
-//		try
-//		{
-//			pdfDocument.add(tasks);
-//		}
-//		catch (DocumentException e)
-//		{
-//			e.printStackTrace();
-//		}
-//		pdfDocument.close();
-		//add to pdf
-		
-		task = "a = " + firstNum + " " + "b = " + secondNum;
-		System.out.println(task);
 		for(int i=0;i<12;i++) 
 		{
 			testGenerator();
@@ -95,8 +36,7 @@ public class Main extends Generator
 
 		int bitwisedResult = bitwiseOperation();
 
-		System.out.println("result: " + "0x" + Integer.toHexString(bitwisedResult));
-		System.out.println("__________________________________________");
+		System.out.println("result: " + "0x" + Integer.toHexString(bitwisedResult) + "\n");
 	}
 
 	/**
@@ -119,31 +59,24 @@ public class Main extends Generator
 			if ((generator.shifter() == 1))
 			{
 				// TODO: CHange 4 to random number
-				int firstNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				firstNum = firstNum << firstNumBitShift;
-				int secondNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				secondNum = secondNum >> secondNumBitShift;
-				System.out.println("a <<" + firstNumBitShift );
-				System.out.println("b >> " + secondNumBitShift);
-				
+				firstNum = firstNum << generator.randomShiftBitsGenerator(shifter);
+				secondNum = secondNum >> generator.randomShiftBitsGenerator(shifter);
+				System.out.println("a <<" );
+				System.out.println("b >> ");
 			}
 			else if (generator.shifter() == 2)
 			{
-				int firstNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				firstNum = firstNum >> firstNumBitShift;
-				int secondNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				secondNum = secondNum << secondNumBitShift;
-				System.out.println("a >>" + firstNumBitShift );
-				System.out.println("b << " + secondNumBitShift);
+				firstNum = firstNum >> generator.randomShiftBitsGenerator(shifter);
+				secondNum = secondNum << generator.randomShiftBitsGenerator(shifter);
+				System.out.println("a >>" );
+				System.out.println("b << ");
 			}
 			else
 			{
-				int firstNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				firstNum = firstNum << firstNumBitShift;
-				int secondNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				secondNum = secondNum << secondNumBitShift;
-				System.out.println("a <<" + firstNumBitShift );
-				System.out.println("b << " + secondNumBitShift);
+				firstNum = firstNum << generator.randomShiftBitsGenerator(shifter);
+				secondNum = secondNum << generator.randomShiftBitsGenerator(shifter);
+				System.out.println("a <<" );
+				System.out.println("b << ");
 			}
 		}
 		else
@@ -151,30 +84,24 @@ public class Main extends Generator
 			if ((generator.shifter() == 1))
 			{
 				// TODO: CHange 4 to random number
-				int firstNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				firstNum = firstNum >> firstNumBitShift;
-				int secondNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				secondNum = secondNum << secondNumBitShift;
-				System.out.println("a >>" + firstNumBitShift );
-				System.out.println("b << " + secondNumBitShift);
+				firstNum = firstNum >> generator.randomShiftBitsGenerator(shifter);
+				secondNum = secondNum << generator.randomShiftBitsGenerator(shifter);
+				System.out.println("a >>" );
+				System.out.println("b << ");
 			}
 			else if (generator.shifter() == 2)
 			{
-				int firstNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				firstNum = firstNum << firstNumBitShift;
-				int secondNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				secondNum = secondNum >> secondNumBitShift;
-				System.out.println("a <<" + firstNumBitShift );
-				System.out.println("b >> " + secondNumBitShift);
+				firstNum = firstNum << generator.randomShiftBitsGenerator(shifter);
+				secondNum = secondNum >> generator.randomShiftBitsGenerator(shifter);
+				System.out.println("a <<" );
+				System.out.println("b >> ");
 			}
 			else
 			{
-				int firstNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				firstNum = firstNum >> firstNumBitShift;
-				int secondNumBitShift = generator.randomShiftBitsGenerator(shifter);
-				secondNum = secondNum >> secondNumBitShift;
-				System.out.println("a >>" + firstNumBitShift );
-				System.out.println("b >> " + secondNumBitShift);
+				firstNum = firstNum >> generator.randomShiftBitsGenerator(shifter);
+				secondNum = secondNum >> generator.randomShiftBitsGenerator(shifter);
+				System.out.println("a >>" );
+				System.out.println("b >> ");
 			}
 		}
 	}
