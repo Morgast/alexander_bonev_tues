@@ -5,62 +5,80 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
-
 
 public class FitMe
 {
-	
+	private Map<String, String> map = new HashMap<String, String>();
+
 	private static double bodyfat;
+
 	public static void main(String[] args)
 	{
+		Scanner sc = new Scanner(System.in);
 		FitMe o = new FitMe();
 		System.out.println("vuvedete hansh, taliq i viso4ina");
-		
-		
-		o.calculateBodyFat(args);
+
+		o.parseConsoleInput(args);
+		o.calculateBodyFat();
 		System.out.println(bodyfat);
 		if (bodyfat < 15)
 		{
-			o.copyFileUsingFileStreams("/resources/programa_kachvane", "../trenirovka_pokachvane.txt");
+			o.copyFileUsingFileStreams("/resources/programa_kachvane.txt", "../trenirovka_pokachvane.txt");
 			o.copyFileUsingFileStreams("/resources/rejim_gain.txt", "../rejim_pokachvane.txt");
 		}
 
 		if ((bodyfat >= 16) || (bodyfat <= 23))
 		{
-			Scanner sc = new Scanner(System.in);
+
 			System.out.println("Vuvedete 1 za povishavane na muskulnata masa i sila ili 2 za redukciq na tegloto i mazninite");
 			int userChoice = sc.nextInt();
-			if(userChoice == 1) {
+			if (userChoice == 1)
+			{
 				o.copyFileUsingFileStreams("/resources/programa_kachvane.txt", "../gain.txt");
 				o.copyFileUsingFileStreams("/resources/rejim_gain.txt", "../rejim_pokachvane.txt");
 			}
-			else if(userChoice == 2) {
+			else if (userChoice == 2)
+			{
+				o.copyFileUsingFileStreams("/resources/programa_svalqne.txt", "../programa_svalqne.txt");
+				o.copyFileUsingFileStreams("/resources/rejim_redukciq.txt", "../rejim_svalqne.txt");
+			}
+
+			if (bodyfat > 24)
+			{
 				o.copyFileUsingFileStreams("/resources/programa_svalqne.txt", "../programa_svalqne.txt");
 				o.copyFileUsingFileStreams("/resources/rejim_redukciq.txt", "../rejim_svalqne.txt");
 			}
 		}
 
-		if (bodyfat > 24)
+		sc.close();
+	}
+
+	private void parseConsoleInput(String[] args)
+	{
+		for (int i = 0; i < args.length; i++)
 		{
-			o.copyFileUsingFileStreams("/resources/programa_svalqne.txt", "../programa_svalqne.txt");
-			o.copyFileUsingFileStreams("/resources/rejim_redukciq.txt", "../rejim_svalqne.txt");
+			// direktoriq=C:\
+			String currentArgument = args[i];
+			String[] splittedArgument = currentArgument.split("=");
+			String measurement = splittedArgument[0];
+			String measurementValue = splittedArgument[1];
+			map.put(measurement, measurementValue);
 		}
 	}
 
-	private double calculateBodyFat(String[] args)
+	private double calculateBodyFat()
 	{
-		int hip;
-		int waist;
-		int height;
 		double A;
 		double B;
 		double C;
 		double D;
-		
-		hip = Integer.parseInt(args[0]);
-		waist = Integer.parseInt(args[1]);
-		height = Integer.parseInt(args[2]);
+
+		Integer hip = Integer.parseInt(map.get("hansh"));
+		Integer waist = Integer.parseInt(map.get("taliq"));
+		Integer height = Integer.parseInt(map.get("visochina"));
 
 		A = hip * 0.55 - 2;
 		B = waist * 0.29 - 4;
@@ -80,12 +98,12 @@ public class FitMe
 			URL resource = FitMe.class.getResource(source);
 			String filePath = resource.getPath();
 			input = new FileInputStream(filePath);
-			output = new FileOutputStream(dest);
+			output = new FileOutputStream(map.get("direktoriq"));
 			byte[] buf = new byte[1024];
 			int bytesRead;
 			while ((bytesRead = input.read(buf)) > 0)
 			{
-				
+
 				output.write(buf, 0, bytesRead);
 			}
 		}
