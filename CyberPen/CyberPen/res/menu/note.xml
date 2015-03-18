@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.victwo.NewNoteActivity" >
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_action_save"
+        android:orderInCategory="100"
+        android:title="@+string/action_save"
+        android:showAsAction="always"/>
+ 
+	<item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/ic_action_remove"
+        android:orderInCategory="100"
+        android:title="@+string/action_delete"
+        android:showAsAction="always"/><item
+        android:id="@+id/action_camera"
+        android:icon="@drawable/ic_action_camera"
+        android:orderInCategory="100"
+        android:title="@+string/action_camera"
+        android:showAsAction="always">
+            <menu></menu>
+        </item>
+	
+	<item
+        android:id="@+id/action_audio"
+        android:icon="@drawable/ic_action_volume_on"
+        android:orderInCategory="100"
+        android:title="@+string/action_record"
+        android:showAsAction="always"/>
+	
+	
+</menu>

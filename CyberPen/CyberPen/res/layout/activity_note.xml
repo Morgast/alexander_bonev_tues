@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.src.vicnote.NewNoteActivity"
+    tools:ignore="MergeRootFrame" >
+    
+    <EditText
+        android:id="@+id/editNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTitle"
+        android:lines="10"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:textIsSelectable="true" >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:id="@+id/ivReturnedPic"
+        android:layout_below="@+id/editNote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+         android:background="@null" />
+
+     <Button
+        android:id="@+id/buttonOverBitmap"
+        android:layout_below="@+id/editNote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:text="" />
+
+     <Button
+         android:id="@+id/gallery_button"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentRight="true"
+         android:text="Gallery" />
+
+     <Button
+         android:id="@+id/delete_button"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentLeft="true"
+         android:text="Delete" />
+
+</RelativeLayout>
